@@ -1,171 +1,208 @@
-// 질문 배열 정의 (각 질문은 두 가지 선택지를 가집니다)
-// 각 질문은 MBTI의 네 가지 차원(E/I, S/N, T/F, J/P) 중 하나에 해당합니다.
+// MBTI 퀴즈 질문 배열 (각 질문은 한 차원에 해당하며, 세 가지 선택지가 주어집니다)
+// 각 질문에서 option 1과 2는 기본 선택, option 3은 "둘 다" 혹은 "상황에 따라"의 느낌을 줍니다.
 const questions = [
     {
-        question: "파티에서, 당신은 주로 어떤 활동을 선호하나요?",
+        question: "파티에 가면 주로 어떤 스타일로 즐기니?",
         options: [
-            { text: "낯선 사람들과 활발히 소통하기", letter: "E" },
-            { text: "몇몇 친한 사람들과 깊은 대화 나누기", letter: "I" }
+            { text: "여러 사람과 신나게 대화하며 에너지를 쏟아!", letter: "E" },
+            { text: "소수의 친구와 진지하게 대화하며 분위기를 즐겨.", letter: "I" },
+            { text: "한쪽 구석에서 조용히 구경하며 분위기를 느껴.", letter: "I" }
         ]
     },
     {
-        question: "현재의 세부사항에 집중하나요, 아니면 미래의 가능성에 주목하나요?",
+        question: "새로운 정보를 접할 때 어떤 방식이 더 끌려?",
         options: [
-            { text: "현재의 세부사항", letter: "S" },
-            { text: "미래의 가능성", letter: "N" }
+            { text: "구체적인 사실과 디테일에 빠져들어.", letter: "S" },
+            { text: "아이디어와 가능성에 흥분해.", letter: "N" },
+            { text: "상황에 따라 다르지만 보통은 사실적인 걸 선호해.", letter: "S" }
         ]
     },
     {
-        question: "결정을 내릴 때 주로 무엇에 의존하나요?",
+        question: "결정을 내릴 때 네 기준은 뭐야?",
         options: [
-            { text: "논리와 객관적 기준", letter: "T" },
-            { text: "개인적 감정과 가치관", letter: "F" }
+            { text: "논리와 객관적 분석, 그게 다야.", letter: "T" },
+            { text: "감정과 직감이 내 선택을 이끌어.", letter: "F" },
+            { text: "둘 다 쓰지만, 결국은 이성이 승리해.", letter: "T" }
         ]
     },
     {
-        question: "일정을 짤 때, 당신은 어떤 방식을 선호하나요?",
+        question: "일정을 계획할 때 어떤 방식을 선호해?",
         options: [
-            { text: "미리 계획을 세워 철저히 따르기", letter: "J" },
-            { text: "즉흥적으로 유동적으로 행동하기", letter: "P" }
+            { text: "체계적이고 미리 계획하는 게 편해.", letter: "J" },
+            { text: "즉흥적으로 그때그때 결정하는 게 재밌어.", letter: "P" },
+            { text: "계획도 좋지만, 유연함도 필요하지.", letter: "J" }
         ]
     },
     {
-        question: "에너지를 얻을 때, 당신은 무엇에 의존하나요?",
+        question: "친구들과 만날 때 어떤 스타일이 더 끌려?",
         options: [
-            { text: "다양한 사람들과의 만남", letter: "E" },
-            { text: "혼자만의 시간", letter: "I" }
+            { text: "새로운 사람들과 만나며 에너지 충전!", letter: "E" },
+            { text: "익숙한 친구들과 편안하게 수다 떨어.", letter: "I" },
+            { text: "때론 혼자만의 시간도 즐겨.", letter: "I" }
         ]
     },
     {
-        question: "당신은 보통 무엇을 신뢰하나요?",
+        question: "정보를 기억할 때 어떤 방식이 더 편해?",
         options: [
-            { text: "과거의 경험", letter: "S" },
-            { text: "직감과 느낌", letter: "N" }
+            { text: "실제 경험과 구체적인 기억에 의존해.", letter: "S" },
+            { text: "아이디어와 상상력이 내 머릿속을 채워.", letter: "N" },
+            { text: "경험도 중요하고 상상도 자극적이야.", letter: "S" }
         ]
     },
     {
-        question: "토론 중, 당신은 주로 어떤 전략을 사용하나요?",
+        question: "토론할 때 의견을 표현하는 스타일은?",
         options: [
-            { text: "논리적 근거 제시", letter: "T" },
-            { text: "감정의 영향 고려", letter: "F" }
+            { text: "논리와 근거로 상대를 설득해.", letter: "T" },
+            { text: "감성과 공감으로 대화를 이끌어.", letter: "F" },
+            { text: "상황에 따라 논리와 감성을 조합해.", letter: "T" }
         ]
     },
     {
-        question: "프로젝트를 진행할 때, 당신은 어떻게 계획하나요?",
+        question: "프로젝트 진행 시 어떤 스타일이 맞아?",
         options: [
-            { text: "구체적인 계획 수립", letter: "J" },
-            { text: "상황에 맞춰 즉흥적으로 진행", letter: "P" }
-        ]
-    },
-    {
-        question: "사회적 상황에서, 당신은 무엇을 더 즐기나요?",
-        options: [
-            { text: "새로운 사람들과의 만남", letter: "E" },
-            { text: "친숙한 사람들과의 대화", letter: "I" }
-        ]
-    },
-    {
-        question: "정보를 다룰 때, 당신은 주로 어떤 접근을 선호하나요?",
-        options: [
-            { text: "구체적인 사실에 집중", letter: "S" },
-            { text: "추상적 이론에 몰두", letter: "N" }
-        ]
-    },
-    {
-        question: "피드백을 줄 때, 당신은 보통 어떻게 표현하나요?",
-        options: [
-            { text: "직설적으로 표현", letter: "T" },
-            { text: "상대방의 감정을 배려", letter: "F" }
-        ]
-    },
-    {
-        question: "일정 관리에 대해, 당신은 어느 쪽에 더 익숙한가요?",
-        options: [
-            { text: "철저한 계획과 조직", letter: "J" },
-            { text: "유연한 대처와 변화", letter: "P" }
+            { text: "미리 계획을 세워 체계적으로 움직여.", letter: "J" },
+            { text: "상황에 따라 유연하게 대처해.", letter: "P" },
+            { text: "일단 시작해보고 그때그때 조절해.", letter: "P" }
         ]
     }
 ];
 
 let currentQuestion = 0;
-// 각 MBTI 차원의 점수를 저장합니다.
 const scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
 
-const quizContainer = document.getElementById('quiz-container');
+// DOM 요소 가져오기
+const startPage = document.getElementById('start-page');
+const chatPage = document.getElementById('chat-page');
+const resultPage = document.getElementById('result-page');
+const chatContainer = document.getElementById('chat-container');
 const startBtn = document.getElementById('start-btn');
+const restartBtn = document.getElementById('restart-btn');
 
-startBtn.addEventListener('click', startQuiz);
-
-function startQuiz() {
-    // 시작 버튼을 숨기고 첫 번째 질문을 보여줍시다.
-    startBtn.style.display = 'none';
-    showQuestion();
+// 채팅창 초기화 (이전 내용 제거)
+function clearChat() {
+    chatContainer.innerHTML = '';
 }
 
-function showQuestion() {
-    quizContainer.innerHTML = '';
-    // 아직 질문이 남아있다면 현재 질문을 표시합니다.
-    if (currentQuestion < questions.length) {
-        const q = questions[currentQuestion];
+// 채팅 말풍선 추가 (타입: 'system' 또는 'user')
+// animation 효과는 CSS @keyframes fadeIn으로 처리됨
+function addMessage(text, type) {
+    const messageEl = document.createElement('div');
+    messageEl.classList.add('message', type);
+    messageEl.textContent = text;
+    chatContainer.appendChild(messageEl);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
 
-        const questionEl = document.createElement('div');
-        questionEl.className = 'question';
-        questionEl.textContent = q.question;
-        quizContainer.appendChild(questionEl);
+// 각 질문마다 2~3번의 대화 흐름(상황극)을 랜덤하게 구성합니다.
+function showQuestionConversation() {
+    clearChat();
+    const q = questions[currentQuestion];
 
-        const optionsList = document.createElement('ul');
-        optionsList.className = 'options';
+    // 첫 질문은 고정되지 않고 랜덤한 인삿말을 사용합니다.
+    const firstFriendMsgs = [
+        "친구: 야, 오늘 너의 성향을 한번 파헤쳐보자고!",
+        "친구: 헐, 너도 이런 성격이었어? 한번 물어볼게!",
+        "친구: 자, 내 호기심을 채울 시간이 왔다! 준비됐어?"
+    ];
+    const firstUserMsgs = [
+        "나: 뭐야, 갑자기 왜 이래?",
+        "나: 좋아, 한번 해보자!",
+        "나: 나도 궁금한데? 시작해!"
+    ];
 
-        q.options.forEach(option => {
-            const li = document.createElement('li');
-            const label = document.createElement('label');
-            const radio = document.createElement('input');
-            radio.type = 'radio';
-            radio.name = 'option';
-            radio.value = option.letter;
-            label.appendChild(radio);
-            label.appendChild(document.createTextNode(' ' + option.text));
-            li.appendChild(label);
-            optionsList.appendChild(li);
-        });
-        quizContainer.appendChild(optionsList);
+    // 후속 대화 메시지 (모든 질문에 공통)
+    const followUpFriendMsgs = [
+        "친구: 그럼, 이번 질문! " + q.question,
+        "친구: 알겠어, 다음 질문! " + q.question,
+        "친구: 자, 이제 물어볼게! " + q.question
+    ];
+    const followUpUserMsgs = [
+        "나: 흠, 재미있겠다. 말해봐!",
+        "나: 오, 그럼 어떻게 대답해야 할지?",
+        "나: 에이, 기대된다!"
+    ];
 
-        const nextBtn = document.createElement('button');
-        nextBtn.textContent = currentQuestion === questions.length - 1 ? '결과 보기' : '다음';
-        nextBtn.disabled = true;
-        quizContainer.appendChild(nextBtn);
-
-        // 옵션 선택 시 다음 버튼 활성화
-        const radios = document.getElementsByName('option');
-        radios.forEach(radio => {
-            radio.addEventListener('change', () => {
-                nextBtn.disabled = false;
-            });
-        });
-
-        nextBtn.addEventListener('click', () => {
-            // 선택된 답안을 확인하여 해당 점수를 추가합니다.
-            radios.forEach(radio => {
-                if (radio.checked) {
-                    scores[radio.value]++;
-                }
-            });
-            currentQuestion++;
-            showQuestion();
-        });
+    if (currentQuestion === 0) {
+        // 첫 질문: 랜덤하게 인삿말 교환 후 질문 제시
+        addMessage(firstFriendMsgs[Math.floor(Math.random() * firstFriendMsgs.length)], "system");
+        setTimeout(() => {
+            addMessage(firstUserMsgs[Math.floor(Math.random() * firstUserMsgs.length)], "user");
+        }, 700);
+        setTimeout(() => {
+            addMessage(followUpFriendMsgs[Math.floor(Math.random() * followUpFriendMsgs.length)], "system");
+            showOptionsForCurrentQuestion();
+        }, 1400);
     } else {
-        // 모든 질문이 완료된 경우 결과를 표시합니다.
-        showResult();
+        // 후속 질문: 2~3번의 대화 흐름을 추가합니다.
+        addMessage("친구: 자, 오늘은 또 뭐가 궁금한지 알아보자!", "system");
+        setTimeout(() => {
+            addMessage(followUpUserMsgs[Math.floor(Math.random() * followUpUserMsgs.length)], "user");
+        }, 600);
+        setTimeout(() => {
+            addMessage("친구: 좋아, 그럼 이번 질문! " + q.question, "system");
+            showOptionsForCurrentQuestion();
+        }, 1200);
     }
 }
 
+// 현재 질문의 선택지를 보여줍니다. 선택 후 선택지 영역은 바로 제거됩니다.
+function showOptionsForCurrentQuestion() {
+    const q = questions[currentQuestion];
+    const optionsDiv = document.createElement('div');
+    optionsDiv.classList.add('options-container');
+
+    q.options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.textContent = option.text;
+        btn.addEventListener('click', () => {
+            // 선택 후 선택지 제거
+            optionsDiv.remove();
+            // 사용자의 선택을 즉시 채팅창에 추가
+            addMessage("나: " + option.text, "user");
+            // 해당 선택지의 점수 누적
+            scores[option.letter]++;
+            // 다음 질문 또는 결과로 넘어가기 전 잠시 대기
+            setTimeout(() => {
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    showQuestionConversation();
+                } else {
+                    showResult();
+                }
+            }, 1000);
+        });
+        optionsDiv.appendChild(btn);
+    });
+    chatContainer.appendChild(optionsDiv);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+// 최종 결과 계산 후 결과 페이지에 표시 (채팅 UI는 사용하지 않습니다)
 function showResult() {
-    // 각 차원별 점수를 비교하여 최종 MBTI 유형을 결정합니다.
     const type =
         (scores.E >= scores.I ? 'E' : 'I') +
         (scores.S >= scores.N ? 'S' : 'N') +
         (scores.T >= scores.F ? 'T' : 'F') +
         (scores.J >= scores.P ? 'J' : 'P');
 
-    quizContainer.innerHTML = `<h2>당신의 MBTI 유형은 ${type} 입니다!</h2>`;
+    chatPage.style.display = "none";
+    resultPage.style.display = "block";
+    document.getElementById("result-text").textContent = "결과: 당신의 MBTI 유형은 " + type + "입니다.";
 }
+
+// 시작 버튼 클릭 시 시작 페이지 숨기고 채팅 페이지로 전환
+startBtn.addEventListener('click', () => {
+    startPage.style.display = "none";
+    chatPage.style.display = "flex";
+    showQuestionConversation();
+});
+
+// 다시 시작 버튼 클릭 시 초기화 후 시작 페이지로 복귀
+restartBtn.addEventListener('click', () => {
+    currentQuestion = 0;
+    for (let key in scores) {
+        scores[key] = 0;
+    }
+    resultPage.style.display = "none";
+    startPage.style.display = "block";
+});
